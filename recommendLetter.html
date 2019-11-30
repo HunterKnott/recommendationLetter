@@ -55,7 +55,8 @@
       document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
     }
     else {
-      if(document.getElementsByClassName(entryName).innerHTML != undefined) {
+      if(document.getElementsByClassName(entryName).length != 0) {
+        console.log('yay');
         for(entry of document.getElementsByClassName(entryName)) {
           entry.innerHTML = queryObj.get(queryValue);
   }
@@ -67,9 +68,6 @@
   }
   
   let currentDate = new Date();
-  for(entry of document.getElementsByClassName('recipientNameEntry')) {
-    entry.innerHTML = queryObj.get('recipientName');
-  }
   populateEntry('recipientTitleEntry', 'recipientTitle');
   populateEntry('companyAddressEntry', 'companyAddress');
   populateEntry('companyCityEntry', 'companyCity');
@@ -81,22 +79,17 @@
   populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
   populateEntry('writerPhoneEntry', 'writerPhone');
   populateEntry('writerEmailEntry', 'writerEmail');
-  // for(entry of document.getElementsByClassName('companyNameEntry')) {
-  //   entry.innerHTML = queryObj.get('companyName');
-  // }
-  for(entry of document.getElementsByClassName('applicantNameEntry')) {
-    entry.innerHTML = queryObj.get('applicantFirstName');
-  }
+  populateEntry('recipientNameEntry', 'recipientName');
+  populateEntry('companyNameEntry', 'companyName');
+  populateEntry('applicantNameEntry', 'applicantFirstName');
+  populateEntry('collegeEntry', 'writerUniversity');
+
   for(entry of document.getElementsByClassName('hisHerEntry')) {
     entry.innerHTML = (queryObj.get('gender') == 'male') ? 'his' : 'her';
-  }
-  for(entry of document.getElementsByClassName('collegeEntry')) {
-    entry.innerHTML = queryObj.get('writerUniversity');
   }
   for(entry of document.getElementsByClassName('himHerEntry')) {
     entry.innerHTML = (queryObj.get('gender') == 'male') ? 'him' : 'her';
   }
-  // document.getElementById('studyFieldEntry').innerHTML = queryObj.get('applicantStudy');
 
   let courseNames = [];
   for(queryValue of queryValues) {
