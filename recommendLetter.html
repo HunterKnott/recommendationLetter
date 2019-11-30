@@ -51,12 +51,12 @@
   let queryValues = queryString.split('&');
 
   function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue) {
-    // if(isTwoWords) {
-    //   document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
-    // }
-    // else {
+    if(isTwoWords) {
+      document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
+    }
+    else {
       document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
-    // }
+    }
   }
   
   let currentDate = new Date();
