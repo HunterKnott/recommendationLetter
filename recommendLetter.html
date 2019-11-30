@@ -49,19 +49,14 @@
   let queryString = queryObj.toString();
   queryString = queryString.replace(/\+/g, ' ');
   let queryValues = queryString.split('&');
-  // for(queryValue of queryValues) {
-  //   if(queryValue.includes('courseName')) {
-
-  //   }
-  // }
 
   function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue) {
-    if(isTwoWords) {
-      document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
-    }
-    else {
+    // if(isTwoWords) {
+    //   document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
+    // }
+    // else {
       document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
-    }
+    // }
   }
   
   let currentDate = new Date();
@@ -69,7 +64,6 @@
     entry.innerHTML = queryObj.get('recipientName');
   }
   populateEntry('recipientTitleEntry', 'recipientTitle');
-  populateEntry('companyNameEntry', 'companyName');
   populateEntry('companyAddressEntry', 'companyAddress');
   populateEntry('companyCityEntry', 'companyCity');
   populateEntry('companyStateEntry', 'companyState');
