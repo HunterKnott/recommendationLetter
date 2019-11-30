@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    label {
+      margin-bottom:3px;
+    }
+    
+    input[type="text"] {
+      display:block;
+      margin:0px 5px 10px;
+    }
+
+    input[type="radio"] {
+      margin:0px 5px 10px;
+    }
+
+    button{
+      display:block;
+      margin-bottom:10px;
+    }
+
+    textarea {
+      display:block;
+      margin-bottom:10px;
+    }
+  </style>
+  <title>Professor Letter of Recommendation Form</title>
+</head>
+<body>
+  <h1>Professor Letter of Recommendation Generator</h1>
+  <h2>Please fill out the following information to create your letter</h2>
+  <hr>
+
+  <form action="recommendLetter.html" method="GET">
+    <label for="#writerFirstName">Your first name</label>
+    <input type="text" name="writerFirstName" id="writerFirstName">
+    
+    <label for="#writerLastName">Your last name</label>
+    <input type="text" name="writerLastName" id="writerLastName">
+
+    <label for="#writerPhone">Your phone number</label>
+    <input type="text" name="writerPhone" id="writerPhone">
+
+    <label for="#writerEmail">Your email</label>
+    <input type="text" name="writerEmail" id="writerEmail">
+
+    <label for="#writerUniversity">University you teach at</label>
+    <input type="text" name="writerUniversity" id="writerUniversity">
+
+    <label for="#recipientName">Recipient's name</label>
+    <input type="text" name="recipientName" id="recipientName">
+
+    <label for="#recipientTitle">Recipient's title/position</label>
+    <input type="text" name="recipientTitle" id="recipientTitle">
+
+    <label for="#companyName">Company name</label>
+    <input type="text" name="companyName" id="companyName">
+
+    <label for="#companyAddress">Company street address</label>
+    <input type="text" name="companyAddress" id="companyAddress">
+
+    <label for="#companyCity">Company city</label>
+    <input type="text" name="companyCity" id="companyCity">
+
+    <label for="#companyState">Company state</label>
+    <input type="text" name="companyState" id="companyState">
+
+    <label for="#companyZip">Company zip code</label>
+    <input type="text" name="companyZip" id="companyZip">
+
+    <label for="#applicantFirstName">Applicant's first name</label>
+    <input type="text" name="applicantFirstName" id="applicantFirstName">
+
+    <label for="#applicantLastName">Applicant's last name</label>
+    <input type="text" name="applicantLastName" id="applicantLastName">
+
+    <label for="#genderField">Applicant's gender</label>
+    <div id="genderField">
+      <input type="radio" name="gender" value="male">Male
+      <input type="radio" name="gender" value="female">Female
+    </div>
+
+    <label for="#applicantPosition">Applicant's prospective position</label>
+    <input type="text" name="applicantPosition" id="applicantPosition">
+
+    <label for="#applicantStudy">Applicant's field of study</label>
+    <input type="text" name="applicantStudy" id="applicantStudy">
+
+    <label>Course(s) the applicant had with you</label>
+    <div id="courseField">
+      <label>Course name</label>
+      <input type="text" name="courseName1">
+    </div>
+    <button id="courseAddButton">Add another course</button>
+    <input type="submit">
+  </form>
+
+</body>
+<script>
+  let courseNumber = 1;
+  document.getElementById('courseAddButton').addEventListener('click', function() {
+    event.preventDefault();
+    courseNumber++;
+    document.getElementById('courseField').innerHTML += `<label>Course name</label><input type="text"             name=courseName${courseNumber}>`;
+  })
+</script>
+</html>

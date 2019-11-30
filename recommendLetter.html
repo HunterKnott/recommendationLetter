@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- https://resumegenius.com/letter-of-recommendation/samples-for-employment#By-Supervisor -->
+  <!-- https://resumegenius.com/letter-of-recommendation/student-and-teacher-samples#For-Teacher -->
+  <style>
+    
+  </style>
+  <title>Letter of Recommendation</title>
+</head>
+<body>
+  <p id="dataEntry">[Date]</p>
+  <br>
+
+  <p class="recipientNameEntry">[Recipient Name]</p>
+  <p id="recipientTitleEntry">[Recipient Title]</p>
+  <p class="companyNameEntry">[Company Name]</p>
+  <p id="companyAddressEntry">[Company Address]</p>
+  <p><span id="companyCityEntry">[City</span> <span id="companyStateEntry">State</span>, <span id="companyZipEntry">Zip]</span></p>
+  <br>
+
+  <p>Dear <span class="recipientNameEntry">[Recipient Name]</span>,</p>
+  <br>
+
+  <p>I am pleased to recommend <span id="applicantFullNameEntry">[Applicant Name]</span> for the position of <span id="applicantPositionEntry">[Applicant Position]</span> at <span class="companyNameEntry">[Company Name]</span>. I got to know <span class="applicantNameEntry">[Applicant]</span> as <span class="hisHerEntry">[his/her]</span> professor at <span class="collegeEntry">[College/University]</span>. During this time with <span class="himHerEntry">[him/her]</span>, I was greatly impressed by <span class="applicantNameEntry">[Applicant]</span>'s dedication to <span id="studyFieldEntry">[Field of Study]</span>.</p>
+  <br>
+
+  <p>While studying in <span id="courseNamesEntry"></span> <span class="applicantNameEntry">[Applicant]</span> demonstrated exceptional [character trait(s)]. [Short example of Applicant demonstrating character trait(s)].</p>
+  <br>
+
+  <p>In addition to <span class="applicantNameEntry">[Applicant]</span>'s exceptional work as one of my students, <span class="hisHerEntry">[his/her]</span> [other positive trait(s)] made <span class="himHerEntry">[him/her]</span> a great member of the <span class="collegeEntry">[College/University]</span> community. <span class="applicantNameEntry">[Applicant]</span>'s consistent effort as one of my students has been thoroughly impressive.</p>
+  <br>
+
+  <p>It is my honor to recommend <span class="applicantNameEntry">[Applicant]</span> for this position. I am confident that <span id="heSheEntry">[he/she]</span> will make a strong and hard-working addition to your team. You are more than welcome to contact me with any questions regarding <span class="applicantNameEntry">[Applicant]</span>'s candidacy for this job.</p>
+  <br>
+
+  <p>Sincerely,</p>
+
+  <p>___________________</p>
+  <p><span id="writerNameEntry">[Your Name]</span></p>
+  <p><span id="writerPhoneEntry">[Your Phone Number]</span></p>
+  <p><span id="writerEmailEntry">[Your Email]</span></p>
+</body>
+<script>
+  let queryObj = new URLSearchParams(location.search);
+  let queryString = queryObj.toString();
+  queryString = queryString.replace(/\+/g, ' ');
+  let queryValues = queryString.split('&');
+  // for(queryValue of queryValues) {
+  //   if(queryValue.includes('courseName')) {
+
+  //   }
+  // }
+
+  function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue) {
+    if(isTwoWords) {
+      document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
+    }
+    else {
+      document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
+    }
+  }
+  
+  let currentDate = new Date();
+  for(entry of document.getElementsByClassName('recipientNameEntry')) {
+    entry.innerHTML = queryObj.get('recipientName');
+  }
+  populateEntry('recipientTitleEntry', 'recipientTitle');
+  populateEntry('companyNameEntry', 'companyName');
+  populateEntry('companyAddressEntry', 'companyAddress');
+  populateEntry('companyCityEntry', 'companyCity');
+  populateEntry('companyStateEntry', 'companyState');
+  populateEntry('companyZipEntry', 'companyZip');
+  populateEntry('applicantFullNameEntry', 'applicantFirstName', true, 'applicantLastName');
+  populateEntry('applicantPositionEntry', 'applicantPosition');
+  populateEntry('studyFieldEntry', 'applicantStudy');
+  populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
+  populateEntry('writerPhoneEntry', 'writerPhone');
+  populateEntry('writerEmailEntry', 'writerEmail');
+  for(entry of document.getElementsByClassName('companyNameEntry')) {
+    entry.innerHTML = queryObj.get('companyName');
+  }
+  for(entry of document.getElementsByClassName('applicantNameEntry')) {
+    entry.innerHTML = queryObj.get('applicantFirstName');
+  }
+  for(entry of document.getElementsByClassName('hisHerEntry')) {
+    entry.innerHTML = (queryObj.get('gender') == 'male') ? 'his' : 'her';
+  }
+  for(entry of document.getElementsByClassName('collegeEntry')) {
+    entry.innerHTML = queryObj.get('writerUniversity');
+  }
+  for(entry of document.getElementsByClassName('himHerEntry')) {
+    entry.innerHTML = (queryObj.get('gender') == 'male') ? 'him' : 'her';
+  }
+  // document.getElementById('studyFieldEntry').innerHTML = queryObj.get('applicantStudy');
+
+  let courseNames = [];
+  for(queryValue of queryValues) {
+    if(queryValue.includes('courseName')) {
+      courseNames.push(queryValue);
+    }
+  }
+  for(let i = 0; i < courseNames.length - 1; i++) {
+    document.getElementById('courseNamesEntry').innerHTML += courseNames[i].substr(queryValue.indexOf('=') + 1)   + ', ';
+  }
+  document.getElementById('courseNamesEntry').innerHTML += ' and ' + courseNames[courseNames.length - 1].substr   (queryValue.indexOf('=') + 1) + ',';
+
+  document.getElementById('heSheEntry').innerHTML = (queryObj.get('gender') == 'male') ? 'he' : 'she';
+</script>
+</html>
