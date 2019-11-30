@@ -55,7 +55,14 @@
       document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
     }
     else {
-      document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
+      if(document.getElementsByClassName(entryName).innerHTML != undefined) {
+        for(entry of document.getElementsByClassName(entryName)) {
+          entry.innerHTML = queryObj.get(queryValue);
+  }
+      }
+      else {
+        document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
+      }
     }
   }
   
@@ -74,9 +81,9 @@
   populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
   populateEntry('writerPhoneEntry', 'writerPhone');
   populateEntry('writerEmailEntry', 'writerEmail');
-  for(entry of document.getElementsByClassName('companyNameEntry')) {
-    entry.innerHTML = queryObj.get('companyName');
-  }
+  // for(entry of document.getElementsByClassName('companyNameEntry')) {
+  //   entry.innerHTML = queryObj.get('companyName');
+  // }
   for(entry of document.getElementsByClassName('applicantNameEntry')) {
     entry.innerHTML = queryObj.get('applicantFirstName');
   }
