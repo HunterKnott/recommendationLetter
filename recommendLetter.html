@@ -84,20 +84,23 @@
   populateEntry('companyCityEntry', 'companyCity');
   populateEntry('companyStateEntry', 'companyState');
   populateEntry('companyZipEntry', 'companyZip');
-  populateEntry('applicantFullNameEntry', 'applicantFirstName', true, 'applicantLastName');
   populateEntry('applicantPositionEntry', 'applicantPosition');
   populateEntry('studyFieldEntry', 'applicantStudy');
-  populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
   populateEntry('writerPhoneEntry', 'writerPhone');
   populateEntry('writerEmailEntry', 'writerEmail');
   populateEntry('recipientNameEntry', 'recipientName');
   populateEntry('companyNameEntry', 'companyName');
   populateEntry('applicantNameEntry', 'applicantFirstName');
   populateEntry('collegeEntry', 'writerUniversity');
+  populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
+  populateEntry('applicantFullNameEntry', 'applicantFirstName', true, 'applicantLastName');
   populateEntry('hisHerEntry', 'gender', false, undefined, 'his', 'her');
   populateEntry('himHerEntry', 'gender', false, undefined, 'him', 'her');
   populateEntry('heSheEntry', 'gender', false, undefined, 'he', 'she');
 
+  function populateListEntry() {
+    let queryValue
+  }
 
   let courseNames = [];
   for(queryValue of queryValues) {
