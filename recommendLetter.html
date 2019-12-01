@@ -50,19 +50,30 @@
   queryString = queryString.replace(/\+/g, ' ');
   let queryValues = queryString.split('&');
 
-  function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue) {
+  function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue, maleRef, femaleRef) {
     if(isTwoWords) {
       document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
     }
     else {
       if(document.getElementsByClassName(entryName).length != 0) {
-        console.log('yay');
-        for(entry of document.getElementsByClassName(entryName)) {
-          entry.innerHTML = queryObj.get(queryValue);
-  }
+        if(maleRef != undefined) {
+          for(entry of document.getElementsByClassName(entryName)) {
+            entry.innerHTML = (queryObj.get('gender') == 'male') ? maleRef : femaleRef;
+          }
+        }
+        else {
+          for(entry of document.getElementsByClassName(entryName)) {
+            entry.innerHTML = queryObj.get(queryValue);
+          }
+        }
       }
       else {
-        document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
+        if(maleRef != undefined) {
+          document.getElementById(entryName).innerHTML = (queryObj.get('gender') == 'male') ? maleRef :           femaleRef;
+        }
+        else {
+          document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
+        }
       }
     }
   }
@@ -83,13 +94,10 @@
   populateEntry('companyNameEntry', 'companyName');
   populateEntry('applicantNameEntry', 'applicantFirstName');
   populateEntry('collegeEntry', 'writerUniversity');
+  populateEntry('hisHerEntry', 'gender', false, undefined, 'his', 'her');
+  populateEntry('himHerEntry', 'gender', false, undefined, 'him', 'her');
+  populateEntry('heSheEntry', 'gender', false, undefined, 'he', 'she');
 
-  for(entry of document.getElementsByClassName('hisHerEntry')) {
-    entry.innerHTML = (queryObj.get('gender') == 'male') ? 'his' : 'her';
-  }
-  for(entry of document.getElementsByClassName('himHerEntry')) {
-    entry.innerHTML = (queryObj.get('gender') == 'male') ? 'him' : 'her';
-  }
 
   let courseNames = [];
   for(queryValue of queryValues) {
@@ -101,7 +109,5 @@
     document.getElementById('courseNamesEntry').innerHTML += courseNames[i].substr(queryValue.indexOf('=') + 1)   + ', ';
   }
   document.getElementById('courseNamesEntry').innerHTML += ' and ' + courseNames[courseNames.length - 1].substr   (queryValue.indexOf('=') + 1) + ',';
-
-  document.getElementById('heSheEntry').innerHTML = (queryObj.get('gender') == 'male') ? 'he' : 'she';
 </script>
 </html>
