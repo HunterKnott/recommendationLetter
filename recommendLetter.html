@@ -49,6 +49,27 @@
   let queryString = queryObj.toString();
   queryString = queryString.replace(/\+/g, ' ');
   let queryValues = queryString.split('&');
+  
+  let currentDate = new Date();
+  populateEntry('recipientTitleEntry', 'recipientTitle');
+  populateEntry('companyAddressEntry', 'companyAddress');
+  populateEntry('companyCityEntry', 'companyCity');
+  populateEntry('companyStateEntry', 'companyState');
+  populateEntry('companyZipEntry', 'companyZip');
+  populateEntry('applicantPositionEntry', 'applicantPosition');
+  populateEntry('studyFieldEntry', 'applicantStudy');
+  populateEntry('writerPhoneEntry', 'writerPhone');
+  populateEntry('writerEmailEntry', 'writerEmail');
+  populateEntry('recipientNameEntry', 'recipientName');
+  populateEntry('companyNameEntry', 'companyName');
+  populateEntry('applicantNameEntry', 'applicantFirstName');
+  populateEntry('collegeEntry', 'writerUniversity');
+  populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
+  populateEntry('applicantFullNameEntry', 'applicantFirstName', true, 'applicantLastName');
+  populateEntry('hisHerEntry', 'gender', false, undefined, 'his', 'her');
+  populateEntry('himHerEntry', 'gender', false, undefined, 'him', 'her');
+  populateEntry('heSheEntry', 'gender', false, undefined, 'he', 'she');
+  populateListEntry('courseNamesEntry', 'courseName');
 
   function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue, maleRef, femaleRef) {
     if(isTwoWords) {
@@ -77,40 +98,18 @@
       }
     }
   }
-  
-  let currentDate = new Date();
-  populateEntry('recipientTitleEntry', 'recipientTitle');
-  populateEntry('companyAddressEntry', 'companyAddress');
-  populateEntry('companyCityEntry', 'companyCity');
-  populateEntry('companyStateEntry', 'companyState');
-  populateEntry('companyZipEntry', 'companyZip');
-  populateEntry('applicantPositionEntry', 'applicantPosition');
-  populateEntry('studyFieldEntry', 'applicantStudy');
-  populateEntry('writerPhoneEntry', 'writerPhone');
-  populateEntry('writerEmailEntry', 'writerEmail');
-  populateEntry('recipientNameEntry', 'recipientName');
-  populateEntry('companyNameEntry', 'companyName');
-  populateEntry('applicantNameEntry', 'applicantFirstName');
-  populateEntry('collegeEntry', 'writerUniversity');
-  populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
-  populateEntry('applicantFullNameEntry', 'applicantFirstName', true, 'applicantLastName');
-  populateEntry('hisHerEntry', 'gender', false, undefined, 'his', 'her');
-  populateEntry('himHerEntry', 'gender', false, undefined, 'him', 'her');
-  populateEntry('heSheEntry', 'gender', false, undefined, 'he', 'she');
 
-  function populateListEntry() {
-    let queryValue
-  }
-
-  let courseNames = [];
-  for(queryValue of queryValues) {
-    if(queryValue.includes('courseName')) {
-      courseNames.push(queryValue);
+  function populateListEntry(entryName, queryIdentifier) {
+    let querySubValues = [];
+    for(queryValue of queryValues) {
+      if(queryValue.includes(queryIdentifier)) {
+        querySubValues.push(queryValue);
+      }
     }
+    for(let i = 0; i < querySubValues.length - 1; i++) {
+      document.getElementById(entryName).innerHTML += querySubValues[i].substr(queryValue.indexOf('=') + 1)       + ', ';
+    }
+    document.getElementById(entryName).innerHTML += ' and ' + querySubValues[querySubValues.length - 1].substr(queryValue.indexOf('=') + 1) + ',';
   }
-  for(let i = 0; i < courseNames.length - 1; i++) {
-    document.getElementById('courseNamesEntry').innerHTML += courseNames[i].substr(queryValue.indexOf('=') + 1)   + ', ';
-  }
-  document.getElementById('courseNamesEntry').innerHTML += ' and ' + courseNames[courseNames.length - 1].substr   (queryValue.indexOf('=') + 1) + ',';
 </script>
 </html>
