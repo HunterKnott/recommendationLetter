@@ -96,6 +96,14 @@
       <input type="text" name="courseName1">
     </div>
     <button id="courseAddButton">Add another course</button>
+
+    <label>Positive character traits the applicant has</label>
+    <div id="positiveTraitsField">
+      <label>Positive trait</label>
+      <input type="text" name="positiveTrait1">
+    </div>
+    <button id="positiveTraitAddButton">Add another trait</button>
+
     <input type="submit">
   </form>
 
@@ -106,6 +114,11 @@
     event.preventDefault();
     courseNumber++;
     document.getElementById('courseField').innerHTML += `<label>Course name</label><input type="text"             name=courseName${courseNumber}>`;
-  })
+  });
+
+  // function addField(queryAmount, fieldId, fieldLabel) {
+  //   queryAmount++;
+  //   document.getElementById(fieldId).innerHTML += `<label>${fieldLabel}</label><input type="text"                 name=
+  // }
 </script>
 </html>
