@@ -16,7 +16,7 @@
 
     form {
       display: inline-block;
-      width: 50%;
+      width: 45%;
       padding: 20px;
       border: solid black .1mm;
       margin: 10mm 70mm 30mm;
@@ -30,7 +30,7 @@
     
     input[type="text"] {
       display: block;
-      width: 200px;
+      width: 300px;
       padding: 8px;
       border: 1px solid #aaa;
       border-radius: 4px;
@@ -64,6 +64,7 @@
       border: 1px solid #aaa;
       border-radius: 4px;
       margin-bottom: 10px;
+      width:300px;
     }
 
     .infoArea {
@@ -102,6 +103,7 @@
         <label for="#writerUniversity">University you teach at</label>
         <input type="text" name="writerUniversity" id="writerUniversity" required>
       </div>
+      <hr>
 
       <div class="infoArea">
         <h2>Company Information</h2>
@@ -126,6 +128,7 @@
         <label for="#companyZip">Company zip code</label>
         <input type="text" name="companyZip" id="companyZip" required>
       </div>
+      <hr>
 
       <div class="infoArea">
         <h2>Applicant Information</h2>
@@ -149,22 +152,22 @@
 
         <label>Courses the applicant had with you</label>
         <div id="courseField">
-          <label>Course name</label>
           <input type="text" name="courseName1" required>
         </div>
         <button id="courseAddButton">Add another course</button>
       </div>
+      <hr>
 
       <div class="infoArea">
         <h2>Extra Comments</h2>
         <label for="workExample">Example of the applicant's work ethic</label>
-        <textarea name="workExample" id="workExample" cols="30" rows="4" required></textarea>
+        <textarea name="workExample" id="workExample" rows="4" required></textarea>
 
         <label for="personalityExample">Example of the applicant's personality</label>
-        <textarea name="personalityExample" id="personalityExample" cols="30" rows="4" required></textarea>
+        <textarea name="personalityExample" id="personalityExample" rows="4" required></textarea>
 
         <label for="warning">A warning about the applicant the company should know (optional)</label>
-        <textarea name="warning" id="warning" cols="30" rows="4"></textarea>
+        <textarea name="warning" id="warning" rows="4"></textarea>
       </div>
 
       <input type="submit">
@@ -176,7 +179,7 @@
   document.getElementById('courseAddButton').addEventListener('click', function() {
     event.preventDefault();
     courseNumber++;
-    document.getElementById('courseField').innerHTML += `<label>Course name</label><input type="text"             name=courseName${courseNumber}>`;
+    document.getElementById('courseField').innerHTML += `<input type="text" name=courseName${courseNumber}>`;
   });
 </script>
 </html>
