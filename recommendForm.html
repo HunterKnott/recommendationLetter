@@ -6,138 +6,170 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <style>
     body {
-
+      align-content: center;
+      background: #8d8c8c;
+    }
+    
+    h1, h2 {
+      text-align: center;
     }
 
-    h1, h2 {
-      text-align:center;
+    form {
+      display: inline-block;
+      width: 50%;
+      padding: 20px;
+      border: solid black .1mm;
+      margin: 10mm 70mm 30mm;
+      background: #d1d0cb;
     }
     
     label {
-      margin-bottom:3px;
-      display:block;
+      display: block;
+      margin-bottom: 3px;
     }
     
     input[type="text"] {
-      display:block;
+      display: block;
       width: 200px;
       padding: 8px;
-      margin-top: 4px;
-      margin-bottom: 12px;
       border: 1px solid #aaa;
       border-radius: 4px;
-      /* box-sizing: border-box; */
+      margin-top: 4px;
+      margin-bottom: 12px;
     }
 
     input[type="radio"] {
-      margin:0px 5px 10px;
+      margin: 0px 5px 10px;
+    }
+
+    input[type="submit"] {
+      width: 20%;
+      padding: 15px;
+      border: none;
+      border-radius: 4px;
+      margin: 10px 0px;
+      color: white;
+      background-color: #09f;
+      cursor: pointer;
     }
 
     button {
-      display:block;
-      margin-bottom:10px;
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
     }
 
     textarea {
-      display:block;
-      margin-bottom:10px;
+      display: block;
       border: 1px solid #aaa;
       border-radius: 4px;
+      margin-bottom: 10px;
     }
 
     .infoArea {
-      padding:20px;
+      padding: 20px;
+    }
+
+    #header {
+      border: 1px solid black;
+      background: #7396d6;
     }
   </style>
   <title>Professor Letter of Recommendation Form</title>
 </head>
 <body>
-  <h1>Professor Letter of Recommendation Generator (Job Version)</h1>
-  <h2>Please fill out the following information to create your letter</h2>
-  <hr>
+  <div id="header">
+    <h1>Professor Letter of Recommendation Generator (Job Version)</h1>
+    <h2>Please fill out the following information to create your letter</h2>
+  </div>
 
-  <form action="recommendLetter.html" method="GET">
-    <div class="infoArea">
-      <label for="#writerFirstName">Your first name</label>
-      <input type="text" name="writerFirstName" id="writerFirstName" required>
-      
-      <label for="#writerLastName">Your last name</label>
-      <input type="text" name="writerLastName" id="writerLastName" required>
+  <div id="center">
+    <form action="recommendLetter.html" method="GET">
+      <div class="infoArea">
+        <h2>Your Information</h2>
+        <label for="#writerFirstName">Your first name</label>
+        <input type="text" name="writerFirstName" id="writerFirstName" required>
+        
+        <label for="#writerLastName">Your last name</label>
+        <input type="text" name="writerLastName" id="writerLastName" required>
 
-      <label for="#writerPhone">Your phone number</label>
-      <input type="text" name="writerPhone" id="writerPhone" required>
+        <label for="#writerPhone">Your phone number</label>
+        <input type="text" name="writerPhone" id="writerPhone" required>
 
-      <label for="#writerEmail">Your email</label>
-      <input type="text" name="writerEmail" id="writerEmail" required>
+        <label for="#writerEmail">Your email</label>
+        <input type="text" name="writerEmail" id="writerEmail" required>
 
-      <label for="#writerUniversity">University you teach at</label>
-      <input type="text" name="writerUniversity" id="writerUniversity" required>
-    </div>
-
-    <div class="infoArea">
-      <label for="#recipientName">Recipient's name</label>
-      <input type="text" name="recipientName" id="recipientName" required>
-
-      <label for="#recipientTitle">Recipient's title/position</label>
-      <input type="text" name="recipientTitle" id="recipientTitle" required>
-
-      <label for="#companyName">Company name</label>
-      <input type="text" name="companyName" id="companyName" required>
-
-      <label for="#companyAddress">Company street address</label>
-      <input type="text" name="companyAddress" id="companyAddress" required>
-
-      <label for="#companyCity">Company city</label>
-      <input type="text" name="companyCity" id="companyCity" required>
-
-      <label for="#companyState">Company state</label>
-      <input type="text" name="companyState" id="companyState" required>
-
-      <label for="#companyZip">Company zip code</label>
-      <input type="text" name="companyZip" id="companyZip" required>
-    </div>
-
-    <div class="infoArea">
-      <label for="#applicantFirstName">Applicant's first name</label>
-      <input type="text" name="applicantFirstName" id="applicantFirstName" required>
-
-      <label for="#applicantLastName">Applicant's last name</label>
-      <input type="text" name="applicantLastName" id="applicantLastName" required>
-
-      <label for="#genderField">Applicant's gender</label>
-      <div id="genderField">
-        <input type="radio" name="gender" value="male" required>Male
-        <input type="radio" name="gender" value="female">Female
+        <label for="#writerUniversity">University you teach at</label>
+        <input type="text" name="writerUniversity" id="writerUniversity" required>
       </div>
 
-      <label for="#applicantPosition">Applicant's prospective position</label>
-      <input type="text" name="applicantPosition" id="applicantPosition" required>
+      <div class="infoArea">
+        <h2>Company Information</h2>
+        <label for="#recipientName">Recipient's name</label>
+        <input type="text" name="recipientName" id="recipientName" required>
 
-      <label for="#applicantStudy">Applicant's field of study</label>
-      <input type="text" name="applicantStudy" id="applicantStudy" required>
+        <label for="#recipientTitle">Recipient's title/position</label>
+        <input type="text" name="recipientTitle" id="recipientTitle" required>
 
-      <label>Courses the applicant had with you</label>
-      <div id="courseField">
-        <label>Course name</label>
-        <input type="text" name="courseName1" required>
+        <label for="#companyName">Company name</label>
+        <input type="text" name="companyName" id="companyName" required>
+
+        <label for="#companyAddress">Company street address</label>
+        <input type="text" name="companyAddress" id="companyAddress" required>
+
+        <label for="#companyCity">Company city</label>
+        <input type="text" name="companyCity" id="companyCity" required>
+
+        <label for="#companyState">Company state</label>
+        <input type="text" name="companyState" id="companyState" required>
+
+        <label for="#companyZip">Company zip code</label>
+        <input type="text" name="companyZip" id="companyZip" required>
       </div>
-      <button id="courseAddButton">Add another course</button>
-    </div>
 
-    <div class="infoArea">
-      <label for="workExample">Example of the applicant's work ethic</label>
-      <textarea name="workExample" id="workExample" cols="30" rows="4" required></textarea>
+      <div class="infoArea">
+        <h2>Applicant Information</h2>
+        <label for="#applicantFirstName">Applicant's first name</label>
+        <input type="text" name="applicantFirstName" id="applicantFirstName" required>
 
-      <label for="personalityExample">Example of the applicant's personality</label>
-      <textarea name="personalityExample" id="personalityExample" cols="30" rows="4" required></textarea>
+        <label for="#applicantLastName">Applicant's last name</label>
+        <input type="text" name="applicantLastName" id="applicantLastName" required>
 
-      <label for="warning">A warning about the applicant the company should know (optional)</label>
-      <textarea name="warning" id="warning" cols="30" rows="4"></textarea>
-    </div>
+        <label for="#genderField">Applicant's gender</label>
+        <div id="genderField">
+          <input type="radio" name="gender" value="male" required>Male
+          <input type="radio" name="gender" value="female">Female
+        </div>
 
-    <input type="submit">
-  </form>
+        <label for="#applicantPosition">Applicant's prospective position</label>
+        <input type="text" name="applicantPosition" id="applicantPosition" required>
 
+        <label for="#applicantStudy">Applicant's field of study</label>
+        <input type="text" name="applicantStudy" id="applicantStudy" required>
+
+        <label>Courses the applicant had with you</label>
+        <div id="courseField">
+          <label>Course name</label>
+          <input type="text" name="courseName1" required>
+        </div>
+        <button id="courseAddButton">Add another course</button>
+      </div>
+
+      <div class="infoArea">
+        <h2>Extra Comments</h2>
+        <label for="workExample">Example of the applicant's work ethic</label>
+        <textarea name="workExample" id="workExample" cols="30" rows="4" required></textarea>
+
+        <label for="personalityExample">Example of the applicant's personality</label>
+        <textarea name="personalityExample" id="personalityExample" cols="30" rows="4" required></textarea>
+
+        <label for="warning">A warning about the applicant the company should know (optional)</label>
+        <textarea name="warning" id="warning" cols="30" rows="4"></textarea>
+      </div>
+
+      <input type="submit">
+    </form>
+  </div>
 </body>
 <script>
   let courseNumber = 1;
