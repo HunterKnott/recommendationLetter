@@ -79,7 +79,8 @@
 
   let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   let currentDate = new Date();
-  document.getElementById('dateEntry').innerHTML = `${months[currentDate.getMonth()]} ${currentDate.getDay()},    ${currentDate.getFullYear()}`;
+  document.getElementById('dateEntry').innerHTML = `${months[currentDate.getMonth()]} ${currentDate.getDate()},    ${currentDate.getFullYear()}`;
+
 
   if(queryObj.get('warning') != '') {
     document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about         ${queryObj.get("applicantFirstName")}. ${queryObj.get('warning')}</p>`;
