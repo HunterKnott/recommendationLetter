@@ -52,8 +52,7 @@
 </body>
 <script>
   let queryObj = new URLSearchParams(location.search);
-  let queryString = queryObj.toString();
-  queryString = queryString.replace(/\+/g, ' ');
+  let queryString = queryObj.toString().replace(/\+/g, ' ');
   let queryValues = queryString.split('&');
 
   populateEntry('recipientTitleEntry', 'recipientTitle');
@@ -83,7 +82,7 @@
   document.getElementById('dateEntry').innerHTML = `${months[currentDate.getMonth()]} ${currentDate.getDay()},    ${currentDate.getFullYear()}`;
 
   if(queryObj.get('warning') != '') {
-    document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about         ${queryObj.get("applicantFirstName")}. ` + queryObj.get('warning') + '</p>';
+    document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about         ${queryObj.get("applicantFirstName")}. ${queryObj.get('warning')}</p>`;
   }
 
   function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue, maleRef, femaleRef) {
@@ -122,13 +121,13 @@
       }
     }
     if(querySubValues.length == 1) {
-      document.getElementById(entryName).innerHTML = querySubValues[0].substr(queryValue.indexOf('=') + 5) +      ', ';
+      document.getElementById(entryName).innerHTML = `${querySubValues[0].substr(queryValue.indexOf('=') + 5)}, `;
     }
     else {
       for(let i = 0; i < querySubValues.length - 1; i++) {
-      document.getElementById(entryName).innerHTML += querySubValues[i].substr(queryValue.indexOf('=') + 5)       + ', ';
+      document.getElementById(entryName).innerHTML += `${querySubValues[i].substr(queryValue.indexOf('=') + 5)}, `;
       }
-      document.getElementById(entryName).innerHTML += ' and ' + querySubValues[querySubValues.length - 1]         .substr (queryValue.indexOf('=') + 5) + ',';
+      document.getElementById(entryName).innerHTML += ` and ${querySubValues[querySubValues.length - 1].substr(queryValue.indexOf('=') + 5)},`;
     }
   }
 
