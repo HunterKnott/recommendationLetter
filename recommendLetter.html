@@ -6,131 +6,138 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <style>
     body {
-      size:21cm 29.7cm;
-      padding:5%;
-      border:solid black .1mm;
-      margin:30mm 70mm;
+      background:#918483;
     }
     
     p {
       text-indent:20px;
     }
+
+    #paper {
+      size:21cm 29.7cm;
+      padding:5%;
+      border:solid black .1mm;
+      margin:30mm 70mm;
+      background:white;
+    }
   </style>
   <title>Letter of Recommendation</title>
 </head>
 <body>
-  <p id="dateEntry">[Date]</p>
-  <p class="recipientNameEntry">[Recipient Name]</p>
-  <p id="recipientTitleEntry">[Recipient Title]</p>
-  <p class="companyNameEntry">[Company Name]</p>
-  <p id="companyAddressEntry">[Company Address]</p>
-  <p><span id="companyCityEntry">[City</span> <span id="companyStateEntry">State</span>, <span id="companyZipEntry">Zip]</span></p>
-  <br>
+  <div id="paper">
+    <p id="dateEntry">[Date]</p>
+    <p class="recipientNameEntry">[Recipient Name]</p>
+    <p id="recipientTitleEntry">[Recipient Title]</p>
+    <p class="companyNameEntry">[Company Name]</p>
+    <p id="companyAddressEntry">[Company Address]</p>
+    <p><span id="companyCityEntry">[City</span> <span id="companyStateEntry">State</span>, <span id="companyZipEntry">Zip]</span></p>
+    <br>
 
-  <p>Dear <span class="recipientNameEntry">[Recipient Name]</span>,</p>
+    <p>Dear <span class="recipientNameEntry">[Recipient Name]</span>,</p>
+    
+
+    <p>I am pleased to recommend <span id="applicantFullNameEntry">[Applicant Name]</span> for the position of <span id="applicantPositionEntry">[Applicant Position]</span> at <span class="companyNameEntry">[Company Name]</span>. I got to know <span class="applicantNameEntry">[Applicant]</span> as <span class="hisHerEntry">[his/her]</span> professor at <span class="collegeEntry">[College/University]</span>. During this time with <span class="himHerEntry">[him/her]</span>, I was greatly impressed by <span class="applicantNameEntry">[Applicant]</span>'s dedication to <span id="studyFieldEntry">[Field of Study]</span>.</p>
+    
+
+    <p>While studying in <span id="courseNamesEntry"></span> <span class="applicantNameEntry">[Applicant]</span> demonstrated an exceptional work ethic. <span id="workExampleEntry">[Short example of Applicant demonstrating a hard work ethic].</span> <span class="applicantNameEntry">[Applicant]</span>'s consistent effort as one of my students has been thoroughly impressive.</p>
+    
+
+    <p>In addition to <span class="applicantNameEntry">[Applicant]</span>'s exceptional work as one of my students, <span class="hisHerEntry">[his/her]</span> personality made <span class="himHerEntry">[him/her]</span> a great member of the <span class="collegeEntry">[College/University]</span> community. <span id="personalityExampleEntry"></span></p>
+    
+
+    <span id="warningEntry"></span>
+
+    <p>It is my honor to recommend <span class="applicantNameEntry">[Applicant]</span> for this position. I am confident that <span id="heSheEntry">[he/she]</span> will make a strong and hard-working addition to your team. You are more than welcome to contact me with any questions regarding <span class="applicantNameEntry">[Applicant]</span>'s candidacy for this job.</p>
+
+    <p>Sincerely,</p>
+
+    <p>___________________</p>
+    <p><span id="writerNameEntry">[Your Name]</span></p>
+    <p><span id="writerPhoneEntry">[Your Phone Number]</span></p>
+    <p><span id="writerEmailEntry">[Your Email]</span></p>
+  </div>
+
+  <script>
+    let queryObj = new URLSearchParams(location.search);
+    let queryString = queryObj.toString().replace(/\+/g, ' ');
+    let queryValues = queryString.split('&');
   
-
-  <p>I am pleased to recommend <span id="applicantFullNameEntry">[Applicant Name]</span> for the position of <span id="applicantPositionEntry">[Applicant Position]</span> at <span class="companyNameEntry">[Company Name]</span>. I got to know <span class="applicantNameEntry">[Applicant]</span> as <span class="hisHerEntry">[his/her]</span> professor at <span class="collegeEntry">[College/University]</span>. During this time with <span class="himHerEntry">[him/her]</span>, I was greatly impressed by <span class="applicantNameEntry">[Applicant]</span>'s dedication to <span id="studyFieldEntry">[Field of Study]</span>.</p>
+    populateEntry('recipientTitleEntry', 'recipientTitle');
+    populateEntry('companyAddressEntry', 'companyAddress');
+    populateEntry('companyCityEntry', 'companyCity');
+    populateEntry('companyStateEntry', 'companyState');
+    populateEntry('companyZipEntry', 'companyZip');
+    populateEntry('applicantPositionEntry', 'applicantPosition');
+    populateEntry('studyFieldEntry', 'applicantStudy');
+    populateEntry('writerPhoneEntry', 'writerPhone');
+    populateEntry('writerEmailEntry', 'writerEmail');
+    populateEntry('recipientNameEntry', 'recipientName');
+    populateEntry('companyNameEntry', 'companyName');
+    populateEntry('applicantNameEntry', 'applicantFirstName');
+    populateEntry('collegeEntry', 'writerUniversity');
+    populateEntry('workExampleEntry', 'workExample');
+    populateEntry('personalityExampleEntry', 'personalityExample');
+    populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
+    populateEntry('applicantFullNameEntry', 'applicantFirstName', true, 'applicantLastName');
+    populateEntry('hisHerEntry', 'gender', false, undefined, 'his', 'her');
+    populateEntry('himHerEntry', 'gender', false, undefined, 'him', 'her');
+    populateEntry('heSheEntry', 'gender', false, undefined, 'he', 'she');
+    populateListEntry('courseNamesEntry', 'courseName');
   
-
-  <p>While studying in <span id="courseNamesEntry"></span> <span class="applicantNameEntry">[Applicant]</span> demonstrated an exceptional work ethic. <span id="workExampleEntry">[Short example of Applicant demonstrating a hard work ethic].</span> <span class="applicantNameEntry">[Applicant]</span>'s consistent effort as one of my students has been thoroughly impressive.</p>
+    let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    let currentDate = new Date();
+    document.getElementById('dateEntry').innerHTML = `${months[currentDate.getMonth()]} ${currentDate.getDate()},    ${currentDate.getFullYear()}`;
   
-
-  <p>In addition to <span class="applicantNameEntry">[Applicant]</span>'s exceptional work as one of my students, <span class="hisHerEntry">[his/her]</span> personality made <span class="himHerEntry">[him/her]</span> a great member of the <span class="collegeEntry">[College/University]</span> community. <span id="personalityExampleEntry"></span></p>
   
-
-  <span id="warningEntry"></span>
-
-  <p>It is my honor to recommend <span class="applicantNameEntry">[Applicant]</span> for this position. I am confident that <span id="heSheEntry">[he/she]</span> will make a strong and hard-working addition to your team. You are more than welcome to contact me with any questions regarding <span class="applicantNameEntry">[Applicant]</span>'s candidacy for this job.</p>
-
-  <p>Sincerely,</p>
-
-  <p>___________________</p>
-  <p><span id="writerNameEntry">[Your Name]</span></p>
-  <p><span id="writerPhoneEntry">[Your Phone Number]</span></p>
-  <p><span id="writerEmailEntry">[Your Email]</span></p>
-</body>
-<script>
-  let queryObj = new URLSearchParams(location.search);
-  let queryString = queryObj.toString().replace(/\+/g, ' ');
-  let queryValues = queryString.split('&');
-
-  populateEntry('recipientTitleEntry', 'recipientTitle');
-  populateEntry('companyAddressEntry', 'companyAddress');
-  populateEntry('companyCityEntry', 'companyCity');
-  populateEntry('companyStateEntry', 'companyState');
-  populateEntry('companyZipEntry', 'companyZip');
-  populateEntry('applicantPositionEntry', 'applicantPosition');
-  populateEntry('studyFieldEntry', 'applicantStudy');
-  populateEntry('writerPhoneEntry', 'writerPhone');
-  populateEntry('writerEmailEntry', 'writerEmail');
-  populateEntry('recipientNameEntry', 'recipientName');
-  populateEntry('companyNameEntry', 'companyName');
-  populateEntry('applicantNameEntry', 'applicantFirstName');
-  populateEntry('collegeEntry', 'writerUniversity');
-  populateEntry('workExampleEntry', 'workExample');
-  populateEntry('personalityExampleEntry', 'personalityExample');
-  populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
-  populateEntry('applicantFullNameEntry', 'applicantFirstName', true, 'applicantLastName');
-  populateEntry('hisHerEntry', 'gender', false, undefined, 'his', 'her');
-  populateEntry('himHerEntry', 'gender', false, undefined, 'him', 'her');
-  populateEntry('heSheEntry', 'gender', false, undefined, 'he', 'she');
-  populateListEntry('courseNamesEntry', 'courseName');
-
-  let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  let currentDate = new Date();
-  document.getElementById('dateEntry').innerHTML = `${months[currentDate.getMonth()]} ${currentDate.getDate()},    ${currentDate.getFullYear()}`;
-
-
-  if(queryObj.get('warning') != '') {
-    document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about         ${queryObj.get("applicantFirstName")}. ${queryObj.get('warning')}</p>`;
-  }
-
-  function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue, maleRef, femaleRef) {
-    if(isTwoWords) {
-      document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
+    if(queryObj.get('warning') != '') {
+      document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about         ${queryObj.get("applicantFirstName")}. ${queryObj.get('warning')}</p>`;
     }
-    else {
-      if(document.getElementsByClassName(entryName).length != 0) {
-        if(maleRef != undefined) {
-          for(entry of document.getElementsByClassName(entryName)) {
-            entry.innerHTML = (queryObj.get('gender') == 'male') ? maleRef : femaleRef;
-          }
-        }
-        else {
-          for(entry of document.getElementsByClassName(entryName)) {
-            entry.innerHTML = queryObj.get(queryValue);
-          }
-        }
+  
+    function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue, maleRef, femaleRef) {
+      if(isTwoWords) {
+        document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get                (secondQueryValue);
       }
       else {
-        if(maleRef != undefined) {
-          document.getElementById(entryName).innerHTML = (queryObj.get('gender') == 'male') ? maleRef :           femaleRef;
+        if(document.getElementsByClassName(entryName).length != 0) {
+          if(maleRef != undefined) {
+            for(entry of document.getElementsByClassName(entryName)) {
+              entry.innerHTML = (queryObj.get('gender') == 'male') ? maleRef : femaleRef;
+            }
+          }
+          else {
+            for(entry of document.getElementsByClassName(entryName)) {
+              entry.innerHTML = queryObj.get(queryValue);
+            }
+          }
         }
         else {
-          document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
+          if(maleRef != undefined) {
+            document.getElementById(entryName).innerHTML = (queryObj.get('gender') == 'male') ? maleRef :           femaleRef;
+          }
+          else {
+            document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
+          }
         }
       }
     }
-  }
-
-  function populateListEntry(entryName, queryIdentifier) {
-    let querySubValues = [];
-    for(queryValue of queryValues) {
-      if(queryValue.includes(queryIdentifier)) {
-        querySubValues.push(queryValue);
+  
+    function populateListEntry(entryName, queryIdentifier) {
+      let querySubValues = [];
+      for(queryValue of queryValues) {
+        if(queryValue.includes(queryIdentifier)) {
+          querySubValues.push(queryValue);
+        }
+      }
+      if(querySubValues.length == 1) {
+        document.getElementById(entryName).innerHTML = `${querySubValues[0].substr(queryValue.indexOf('=') + 5)}, `;
+      }
+      else {
+        for(let i = 0; i < querySubValues.length - 1; i++) {
+        document.getElementById(entryName).innerHTML += `${querySubValues[i].substr(queryValue.indexOf('=') + 5)}, `;
+        }
+        document.getElementById(entryName).innerHTML += ` and ${querySubValues[querySubValues.length - 1].substr(queryValue.indexOf('=') + 5)},`;
       }
     }
-    if(querySubValues.length == 1) {
-      document.getElementById(entryName).innerHTML = `${querySubValues[0].substr(queryValue.indexOf('=') + 5)}, `;
-    }
-    else {
-      for(let i = 0; i < querySubValues.length - 1; i++) {
-      document.getElementById(entryName).innerHTML += `${querySubValues[i].substr(queryValue.indexOf('=') + 5)}, `;
-      }
-      document.getElementById(entryName).innerHTML += ` and ${querySubValues[querySubValues.length - 1].substr(queryValue.indexOf('=') + 5)},`;
-    }
-  }
-
-</script>
+  </script>
+</body>
 </html>
