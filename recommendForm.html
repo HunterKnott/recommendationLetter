@@ -179,7 +179,10 @@
   document.getElementById('courseAddButton').addEventListener('click', function() {
     event.preventDefault();
     courseNumber++;
-    document.getElementById('courseField').innerHTML += `<input type="text" name=courseName${courseNumber}>`;
+    let newField = document.createElement('input');
+    newField.setAttribute('type', 'text');
+    newField.setAttribute('name', `courseName${courseNumber}`);
+    document.getElementById('courseField').appendChild(newField);
   });
 </script>
 </html>
