@@ -63,6 +63,7 @@
 
   <script>
     let queryObj = new URLSearchParams(location.search);
+    addGenderValues(queryObj.get('gender'));
     let queryString = queryObj.toString().replace(/\+/g, ' ');
     let queryValues = queryString.split('&');
   
@@ -71,22 +72,22 @@
     populateEntry('companyCityEntry', 'companyCity');
     populateEntry('companyStateEntry', 'companyState');
     populateEntry('companyZipEntry', 'companyZip');
+    populateEntry('applicantFirstNameEntry', 'applicantFirstName');
+    populateEntry('applicantLastNameEntry', 'applicantLastName');
     populateEntry('applicantPositionEntry', 'applicantPosition');
     populateEntry('applicantStudyEntry', 'applicantStudy');
-    populateEntry('writerPhoneEntry', 'writerPhone');
-    populateEntry('writerEmailEntry', 'writerEmail');
     populateEntry('recipientNameEntry', 'recipientName');
     populateEntry('companyNameEntry', 'companyName');
     populateEntry('collegeEntry', 'college');
     populateEntry('workExampleEntry', 'workExample');
     populateEntry('personalityExampleEntry', 'personalityExample');
-    populateEntry('applicantFirstNameEntry', 'applicantFirstName');
-    populateEntry('applicantLastNameEntry', 'applicantLastName');
     populateEntry('writerFirstNameEntry', 'writerFirstName');
     populateEntry('writerLastNameEntry', 'writerLastName');
-    populateEntry('hisHerEntry', 'gender', false, undefined, 'his', 'her');
-    populateEntry('himHerEntry', 'gender', false, undefined, 'him', 'her');
-    populateEntry('heSheEntry', 'gender', false, undefined, 'he', 'she');
+    populateEntry('writerPhoneEntry', 'writerPhone');
+    populateEntry('writerEmailEntry', 'writerEmail');
+    populateEntry('hisHerEntry', 'hisHer');
+    populateEntry('himHerEntry', 'himHer');
+    populateEntry('heSheEntry', 'heShe');
     populateListEntry('courseNamesEntry', 'courseName');
   
     let months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
@@ -98,7 +99,7 @@
       document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about ${queryObj.get("applicantFirstName")}. ${queryObj.get('warning')} Other than that, ${queryObj.get("applicantFirstName")} is a great choice for the job.</p>`;
     }
   
-    function populateEntry(entryName, queryValue, secondQueryValue, maleRef, femaleRef) {
+    function populateEntry(entryName, queryValue, maleRef, femaleRef) {
       if(document.getElementsByClassName(entryName).length != 0) {
         if(maleRef != undefined) {
           for(entry of document.getElementsByClassName(entryName)) {
@@ -138,6 +139,19 @@
         document.getElementById(entryName).innerHTML += ` and ${querySubValues[querySubValues.length - 1].substr(queryValue.indexOf('=') + 5)},`;
       }/*If more than 1 list entry*/
     }/*Function end*/
+
+    function addGenderValues(gender) {
+      if(gender == 'male') {
+        queryObj.append('hisHer', 'his');
+        queryObj.append('himHer', 'him');
+        queryObj.append('heShe', 'he');
+      }
+      else {
+        queryObj.append('hisHer', 'her');
+        queryObj.append('himHer', 'her');
+        queryObj.append('heShe', 'she');
+      }
+    }
   </script>
 </body>
 </html>
