@@ -8,9 +8,10 @@
     body {
       background: #918483;
     }
-    
-    p {
-      text-indent: 20px;
+
+    .grouped {
+      padding: 0;
+      margin: 0;
     }
 
     #paper {
@@ -19,17 +20,21 @@
       margin: 30mm 70mm;
       background: white;
     }
+
+    #recipientTitleEntry {
+      padding-bottom:2%;
+    }
   </style>
   <title>Letter of Recommendation</title>
 </head>
 <body>
   <div id="paper">
     <p id="dateEntry"></p>
-    <p class="recipientNameEntry"></p>
-    <p id="recipientTitleEntry"></p>
-    <p class="companyNameEntry"></p>
-    <p id="companyAddressEntry"></p>
-    <p><span id="companyCityEntry"></span> <span id="companyStateEntry"></span>, <span id="companyZipEntry"></span></p>
+    <p class="recipientNameEntry grouped"></p>
+    <p class="grouped" id="recipientTitleEntry"></p>
+    <p class="companyNameEntry grouped"></p>
+    <p class="grouped" id="companyAddressEntry"></p>
+    <p class="grouped"><span id="companyCityEntry"></span> <span id="companyStateEntry"></span>, <span id="companyZipEntry"></span></p>
     <br>
 
     <p>Dear <span class="recipientNameEntry"></span>,</p>
@@ -52,8 +57,8 @@
 
     <p>___________________</p>
     <p><span id="writerNameEntry"></span></p>
-    <p><span id="writerPhoneEntry"></span></p>
-    <p><span id="writerEmailEntry"></span></p>
+    <p class="grouped"><span id="writerPhoneEntry"></span></p>
+    <p class="grouped"><span id="writerEmailEntry"></span></p>
   </div>
 
   <script>

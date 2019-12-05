@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <style>
     body {
-      align-content: center;
       background: #8d8c8c;
     }
     
@@ -15,11 +14,13 @@
     }
 
     form {
-      display: inline-block;
-      width: 45%;
+      display: flex;
+      flex-direction: column;
+      width: 30%;
       padding: 20px;
       border: solid black .1mm;
-      margin: 10mm 70mm 30mm;
+      /* margin: 10mm 100mm 30mm; */
+      margin: 5% 33% 15%;
       background: #d1d0cb;
     }
     
@@ -88,7 +89,7 @@
   <div id="center">
     <form action="recommendLetter.html" method="GET" autocomplete="off">
       <div class="infoArea">
-        <h2>Your Information</h2>
+        <h3>Your Information</h3>
         <label for="#writerFirstName">Your first name</label>
         <input type="text" name="writerFirstName" id="writerFirstName" required>
         
@@ -107,7 +108,7 @@
       <hr>
 
       <div class="infoArea">
-        <h2>Company Information</h2>
+        <h3>Company Information</h3>
         <label for="#recipientName">Recipient's name</label>
         <input type="text" name="recipientName" id="recipientName" required>
 
@@ -132,7 +133,7 @@
       <hr>
 
       <div class="infoArea">
-        <h2>Applicant Information</h2>
+        <h3>Applicant Information</h3>
         <label for="#applicantFirstName">Applicant's first name</label>
         <input type="text" name="applicantFirstName" id="applicantFirstName" required>
 
@@ -160,14 +161,14 @@
       <hr>
 
       <div class="infoArea">
-        <h2>Extra Comments</h2>
+        <h3>Extra Comments</h3>
         <label for="workExample">Example of the applicant's work ethic</label>
         <textarea name="workExample" id="workExample" rows="4" required></textarea>
 
         <label for="personalityExample">Example of the applicant's personality</label>
         <textarea name="personalityExample" id="personalityExample" rows="4" required></textarea>
 
-        <label for="warning">A warning about the applicant the company should know (optional)</label>
+        <label for="warning">Warning about the applicant (optional)</label>
         <textarea name="warning" id="warning" rows="4"></textarea>
       </div>
 
