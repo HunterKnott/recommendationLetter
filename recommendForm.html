@@ -5,9 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <style>
+    /* Dusty #96858f
+       Lavendar #6d7993
+       Overcast #9099a2
+       Paper #d5d5d5 */
+
     body {
       align-items: center;
-      background: #8d8c8c;
+      background: #9099a2;
     }
     
     h1, h2 {
@@ -22,7 +27,7 @@
       padding: 20px;
       border: solid black .1mm;
       margin: 5% 29% 5%;
-      background: #d1d0cb;
+      background: #d5d5d5;
     }
     
     label {
@@ -34,7 +39,7 @@
       display: block;
       width: 300px;
       padding: 8px;
-      border: 1px solid #aaa;
+      border: 1px solid #96858f;
       border-radius: 4px;
       margin-top: 4px;
       margin-bottom: 12px;
@@ -52,8 +57,12 @@
       border-radius: 4px;
       margin: 10px 0px;
       color: white;
-      background-color: #09f;
+      background: #09f;
       cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background: #0069af;
     }
 
     hr {
@@ -80,7 +89,7 @@
 
     #header {
       border: 1px solid black;
-      background: #7396d6;
+      background: #6d7993;
     }
   </style>
   <title>Professor Letter of Recommendation Form</title>
@@ -107,8 +116,8 @@
         <label for="#writerEmail">Your email</label>
         <input type="text" name="writerEmail" id="writerEmail" required>
 
-        <label for="#writerUniversity">University you teach at</label>
-        <input type="text" name="writerUniversity" id="writerUniversity" required>
+        <label for="#college">University you teach at</label>
+        <input type="text" name="college" id="college" required>
       </div>
       <hr>
 
