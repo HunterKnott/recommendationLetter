@@ -40,23 +40,23 @@
     <p>Dear <span class="recipientNameEntry"></span>,</p>
     
 
-    <p>I am pleased to recommend <span id="applicantFullNameEntry"></span> for the position of <span id="applicantPositionEntry"></span> at <span class="companyNameEntry"></span>. I got to know <span class="applicantNameEntry"></span> as <span class="hisHerEntry"></span> professor at <span class="collegeEntry"></span>. During this time with <span class="himHerEntry"></span>, I was greatly impressed by <span class="applicantNameEntry"></span>'s dedication to <span id="applicantStudyEntry"></span>.</p>
+    <p>I am pleased to recommend <span class="applicantFirstNameEntry"></span> <span id="applicantLastNameEntry"></span> for the position of <span id="applicantPositionEntry"></span> at <span class="companyNameEntry"></span>. I got to know <span class="applicantFirstNameEntry"></span> as <span class="hisHerEntry"></span> professor at <span class="collegeEntry"></span>. During this time with <span class="himHerEntry"></span>, I was greatly impressed by <span class="applicantFirstNameEntry"></span>'s dedication to <span id="applicantStudyEntry"></span>.</p>
     
 
-    <p>While studying in <span id="courseNamesEntry"></span> <span class="applicantNameEntry"></span> demonstrated an exceptional work ethic. <span id="workExampleEntry"></span> <span class="applicantNameEntry"></span>'s consistent effort as one of my students has been thoroughly impressive.</p>
+    <p>While studying in <span id="courseNamesEntry"></span> <span class="applicantFirstNameEntry"></span> demonstrated an exceptional work ethic. <span id="workExampleEntry"></span> <span class="applicantFirstNameEntry"></span>'s consistent effort as one of my students has been thoroughly impressive.</p>
     
 
-    <p>In addition to <span class="applicantNameEntry"></span>'s exceptional work as one of my students, <span class="hisHerEntry"></span> personality made <span class="himHerEntry"></span> a great member of the <span class="collegeEntry"></span> community. <span id="personalityExampleEntry"></span></p>
+    <p>In addition to <span class="applicantFirstNameEntry"></span>'s exceptional work as one of my students, <span class="hisHerEntry"></span> personality made <span class="himHerEntry"></span> a great member of the <span class="collegeEntry"></span> community. <span id="personalityExampleEntry"></span></p>
     
 
     <span id="warningEntry"></span>
 
-    <p>It is my honor to recommend <span class="applicantNameEntry"></span> for this position. I am confident that <span id="heSheEntry"></span> will make a strong and hard-working addition to your team. You are more than welcome to contact me with any questions regarding <span class="applicantNameEntry"></span>'s candidacy for this job.</p>
+    <p>It is my honor to recommend <span class="applicantFirstNameEntry"></span> for this position. I am confident that <span id="heSheEntry"></span> will make a strong and hard-working addition to your team. You are more than welcome to contact me with any questions regarding <span class="applicantFirstNameEntry"></span>'s candidacy for this job.</p>
 
     <p>Sincerely,</p>
 
     <p>___________________</p>
-    <p><span id="writerNameEntry"></span></p>
+    <p><span id="writerFirstNameEntry"></span> <span id="writerLastNameEntry"></span></p>
     <p class="grouped"><span id="writerPhoneEntry"></span></p>
     <p class="grouped"><span id="writerEmailEntry"></span></p>
   </div>
@@ -80,9 +80,10 @@
     populateEntry('collegeEntry', 'college');
     populateEntry('workExampleEntry', 'workExample');
     populateEntry('personalityExampleEntry', 'personalityExample');
-    populateEntry('applicantNameEntry', 'applicantFirstName');
-    populateEntry('writerNameEntry', 'writerFirstName', true, 'writerLastName');
-    populateEntry('applicantFullNameEntry', 'applicantFirstName', true, 'applicantLastName');
+    populateEntry('applicantFirstNameEntry', 'applicantFirstName');
+    populateEntry('applicantLastNameEntry', 'applicantLastName');
+    populateEntry('writerFirstNameEntry', 'writerFirstName');
+    populateEntry('writerLastNameEntry', 'writerLastName');
     populateEntry('hisHerEntry', 'gender', false, undefined, 'his', 'her');
     populateEntry('himHerEntry', 'gender', false, undefined, 'him', 'her');
     populateEntry('heSheEntry', 'gender', false, undefined, 'he', 'she');
@@ -97,32 +98,27 @@
       document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about ${queryObj.get("applicantFirstName")}. ${queryObj.get('warning')} Other than that, ${queryObj.get("applicantFirstName")} is a great choice for the job.</p>`;
     }
   
-    function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue, maleRef, femaleRef) {
-      if(isTwoWords) {
-        document.getElementById(entryName).innerHTML = queryObj.get(queryValue) + ' ' + queryObj.get(secondQueryValue);
-      }/*if isTwoWords*/
-      else {
-        if(document.getElementsByClassName(entryName).length != 0) {
-          if(maleRef != undefined) {
-            for(entry of document.getElementsByClassName(entryName)) {
-              entry.innerHTML = (queryObj.get('gender') == 'male') ? maleRef : femaleRef;
-            }/*For loop*/
-          }/*If invloves gender*/
-          else {
-            for(entry of document.getElementsByClassName(entryName)) {
-              entry.innerHTML = queryObj.get(queryValue);
-            }/*For loop*/
-          }/*If doesn't invlove gender*/
-        }/*If is a class*/
+    function populateEntry(entryName, queryValue, secondQueryValue, maleRef, femaleRef) {
+      if(document.getElementsByClassName(entryName).length != 0) {
+        if(maleRef != undefined) {
+          for(entry of document.getElementsByClassName(entryName)) {
+            entry.innerHTML = (queryObj.get('gender') == 'male') ? maleRef : femaleRef;
+          }/*For loop*/
+        }/*If invloves gender*/
         else {
-          if(maleRef != undefined) {
-            document.getElementById(entryName).innerHTML = (queryObj.get('gender') == 'male') ? maleRef : femaleRef;
-          }/*If doesn't involve gender*/
-          else {
-            document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
-          }/*Else if not invloving gender*/
-        }/*Else if not a class*/
-      }/*Else if !isTwoWords*/
+          for(entry of document.getElementsByClassName(entryName)) {
+            entry.innerHTML = queryObj.get(queryValue);
+          }/*For loop*/
+        }/*If doesn't invlove gender*/
+      }/*If is a class*/
+      else {
+        if(maleRef != undefined) {
+          document.getElementById(entryName).innerHTML = (queryObj.get('gender') == 'male') ? maleRef : femaleRef;
+        }/*If doesn't involve gender*/
+        else {
+          document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
+        }/*Else if not invloving gender*/
+      }/*Else if not a class*/
     }/*Function end*/
   
     function populateListEntry(entryName, queryIdentifier) {
