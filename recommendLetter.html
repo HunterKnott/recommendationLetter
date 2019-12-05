@@ -89,7 +89,7 @@
   
   
     if(queryObj.get('warning') != '') {
-      document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about ${queryObj.get("applicantFirstName")}. ${queryObj.get('warning')}</p>`;
+      document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about ${queryObj.get("applicantFirstName")}. ${queryObj.get('warning')} Other than that, ${queryObj.get("applicantFirstName")} is a great choice for the job.</p>`;
     }
   
     function populateEntry(entryName, queryValue, isTwoWords, secondQueryValue, maleRef, femaleRef) {
