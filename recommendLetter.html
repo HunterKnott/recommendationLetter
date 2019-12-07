@@ -142,6 +142,7 @@
       queryObj.append('hisHer', (gender == 'male') ? 'his' : 'her');
       queryObj.append('himHer', (gender == 'male') ? 'him' : 'her');
       queryObj.append('heShe', (gender == 'male') ? 'he' : 'she');
+      queryObj.delete('gender');
     }
   </script>
 </body>
