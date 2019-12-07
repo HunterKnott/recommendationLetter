@@ -66,34 +66,11 @@
     addGenderValues(queryObj.get('gender'));
     let queryString = queryObj.toString().replace(/\+/g, ' ');
     let queryValues = queryString.split('&');
-  
-    // populateEntry('recipientTitleEntry', 'recipientTitle');
-    // populateEntry('companyAddressEntry', 'companyAddress');
-    // populateEntry('companyCityEntry', 'companyCity');
-    // populateEntry('companyStateEntry', 'companyState');
-    // populateEntry('companyZipEntry', 'companyZip');
-    // populateEntry('applicantFirstNameEntry', 'applicantFirstName');
-    // populateEntry('applicantLastNameEntry', 'applicantLastName');
-    // populateEntry('applicantPositionEntry', 'applicantPosition');
-    // populateEntry('applicantStudyEntry', 'applicantStudy');
-    // populateEntry('recipientNameEntry', 'recipientName');
-    // populateEntry('companyNameEntry', 'companyName');
-    // populateEntry('collegeEntry', 'college');
-    // populateEntry('workExampleEntry', 'workExample');
-    // populateEntry('personalityExampleEntry', 'personalityExample');
-    // populateEntry('writerFirstNameEntry', 'writerFirstName');
-    // populateEntry('writerLastNameEntry', 'writerLastName');
-    // populateEntry('writerPhoneEntry', 'writerPhone');
-    // populateEntry('writerEmailEntry', 'writerEmail');
-    // populateEntry('hisHerEntry', 'hisHer');
-    // populateEntry('himHerEntry', 'himHer');
-    // populateEntry('heSheEntry', 'heShe');
 
     for(queryValue of queryValues) {
       if(queryValue.includes('courseName')) {continue;}
       else {
         let key = queryValue.substr(0, queryValue.indexOf('='));
-        console.log(key);
         populateEntry(`${key}Entry`, key);
       }
     }
