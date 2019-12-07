@@ -99,7 +99,7 @@
       document.getElementById('warningEntry').innerHTML = `<p>Now, there is something you should know about ${queryObj.get("applicantFirstName")}. ${queryObj.get('warning')} Other than that, ${queryObj.get("applicantFirstName")} is a great choice for the job.</p>`;
     }
   
-    function populateEntry(entryName, queryValue, maleRef, femaleRef) {
+    function populateEntry(entryName, queryValue) {
       if(document.getElementsByClassName(entryName).length != 0) {
         for(entry of document.getElementsByClassName(entryName)) {
           entry.innerHTML = queryObj.get(queryValue);
@@ -129,16 +129,9 @@
     }/*Function end*/
 
     function addGenderValues(gender) {
-      if(gender == 'male') {
-        queryObj.append('hisHer', 'his');
-        queryObj.append('himHer', 'him');
-        queryObj.append('heShe', 'he');
-      }
-      else {
-        queryObj.append('hisHer', 'her');
-        queryObj.append('himHer', 'her');
-        queryObj.append('heShe', 'she');
-      }
+      queryObj.append('hisHer', (gender == 'male') ? 'his' : 'her');
+      queryObj.append('himHer', (gender == 'male') ? 'him' : 'her');
+      queryObj.append('heShe', (gender == 'male') ? 'he' : 'she');
     }
   </script>
 </body>
