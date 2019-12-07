@@ -101,26 +101,14 @@
   
     function populateEntry(entryName, queryValue, maleRef, femaleRef) {
       if(document.getElementsByClassName(entryName).length != 0) {
-        if(maleRef != undefined) {
-          for(entry of document.getElementsByClassName(entryName)) {
-            entry.innerHTML = (queryObj.get('gender') == 'male') ? maleRef : femaleRef;
-          }/*For loop*/
-        }/*If invloves gender*/
-        else {
-          for(entry of document.getElementsByClassName(entryName)) {
-            entry.innerHTML = queryObj.get(queryValue);
-          }/*For loop*/
-        }/*If doesn't invlove gender*/
-      }/*If is a class*/
+        for(entry of document.getElementsByClassName(entryName)) {
+          entry.innerHTML = queryObj.get(queryValue);
+        }
+      }
       else {
-        if(maleRef != undefined) {
-          document.getElementById(entryName).innerHTML = (queryObj.get('gender') == 'male') ? maleRef : femaleRef;
-        }/*If doesn't involve gender*/
-        else {
-          document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
-        }/*Else if not invloving gender*/
-      }/*Else if not a class*/
-    }/*Function end*/
+        document.getElementById(entryName).innerHTML = queryObj.get(queryValue);
+      }
+    }
   
     function populateListEntry(entryName, queryIdentifier) {
       let querySubValues = [];
@@ -130,13 +118,13 @@
         }/*If statement*/
       }/*For loop*/
       if(querySubValues.length == 1) {
-        document.getElementById(entryName).innerHTML = `${querySubValues[0].substr(queryValue.indexOf('=') + 5)}, `;
+        document.getElementById(entryName).innerHTML = `${querySubValues[0].substr(queryValue.indexOf('=') + 7)}, `;
       }/*If only 1 list entry*/
       else {
         for(let i = 0; i < querySubValues.length - 1; i++) {
-        document.getElementById(entryName).innerHTML += `${querySubValues[i].substr(queryValue.indexOf('=') + 5)}, `;
+        document.getElementById(entryName).innerHTML += `${querySubValues[i].substr(queryValue.indexOf('=') + 7)}, `;
         }/*For loop*/
-        document.getElementById(entryName).innerHTML += ` and ${querySubValues[querySubValues.length - 1].substr(queryValue.indexOf('=') + 5)},`;
+        document.getElementById(entryName).innerHTML += ` and ${querySubValues[querySubValues.length - 1].substr(queryValue.indexOf('=') + 7)},`;
       }/*If more than 1 list entry*/
     }/*Function end*/
 
